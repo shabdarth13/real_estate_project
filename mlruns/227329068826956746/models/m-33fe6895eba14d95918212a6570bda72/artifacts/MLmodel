@@ -1,0 +1,22 @@
+artifact_path: file:C:/Users/acer/OneDrive/Desktop/real_estate_project/mlruns/227329068826956746/models/m-33fe6895eba14d95918212a6570bda72/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.1
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.7.0
+model_id: m-33fe6895eba14d95918212a6570bda72
+model_size_bytes: 24164296
+model_uuid: m-33fe6895eba14d95918212a6570bda72
+prompts: null
+run_id: e1dedb1be4b1484187b98040300874cb
+utc_time_created: '2025-12-05 15:26:43.606417'

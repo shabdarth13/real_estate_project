@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/acer/OneDrive/Desktop/real_estate_project/mlruns/227329068826956746/cd9b4a5b390b456aa934608e95a93bd0/artifacts
+end_time: 1764948743101
+entry_point_name: ''
+experiment_id: '227329068826956746'
+lifecycle_stage: active
+run_id: cd9b4a5b390b456aa934608e95a93bd0
+run_name: big-kit-559
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764948699192
+status: 3
+tags: []
+user_id: acer

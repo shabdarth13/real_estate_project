@@ -1,0 +1,10 @@
+artifact_location: file:C:/Users/acer/OneDrive/Desktop/real_estate_project/mlruns/227329068826956746/models/m-c2fb75f92e85471f9827189bba5a4aff/artifacts
+creation_timestamp: 1764948737013
+experiment_id: '227329068826956746'
+last_updated_timestamp: 1764948743062
+model_id: m-c2fb75f92e85471f9827189bba5a4aff
+model_type: null
+name: rf_investment_model
+source_run_id: cd9b4a5b390b456aa934608e95a93bd0
+status: 2
+status_message: null
