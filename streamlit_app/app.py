@@ -5,6 +5,10 @@ sys.path.append(str(Path(__file__).parent.parent))
 import streamlit as st
 from src.predict import predict_from_dict
 import plotly.graph_objects as go
+
+# -------------------------
+# Page config and dark theme
+# -------------------------
 st.set_page_config(page_title="Real Estate Investment Advisor", layout="wide")
 st.markdown(
     """
@@ -14,12 +18,10 @@ st.markdown(
         background-color: #0f111a;
         color: #f5f5f5;
     }
-    /* Form sections */
-    .stForm {
-        background-color: #1e1f2a;
-        padding: 1rem;
-        border-radius: 10px;
-        border: 1px solid #444;
+    /* Remove white panels from forms */
+    .stForm, .stExpander, .stTextInput, .stNumberInput, .stSelectbox {
+        background-color: transparent !important;
+        color: #f5f5f5;
     }
     /* Headers */
     h1, h2, h3 {
@@ -29,6 +31,10 @@ st.markdown(
     .stSubheader {
         color: #f0f0f0;
     }
+    /* Placeholder text color */
+    ::placeholder {
+        color: #b0b0b0 !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -36,6 +42,10 @@ st.markdown(
 
 st.title("🏡 Real Estate Investment Advisor")
 st.markdown("Fill all fields. Defaults are examples from your sample data.")
+
+# -------------------------
+# Property Form
+# -------------------------
 with st.form("property_form"):
 
     st.subheader("Basic Property Details")
@@ -75,6 +85,10 @@ with st.form("property_form"):
             Amenities = st.text_input("Amenities", value="Playground, Gym, Garden, Pool, Clubhouse")
 
     submitted = st.form_submit_button("Predict Investment")
+
+# -------------------------
+# Prediction & Display
+# -------------------------
 if submitted:
     input_dict = {
         "ID": ID,
@@ -109,11 +123,13 @@ if submitted:
         st.success("✅ Good Investment")
     else:
         st.error("❌ Bad Investment")
+
     if result.get("probability"):
-        st.subheader("Investment Probability ")
+        st.subheader("Investment Probability")
         proba = result["probability"][0] 
         good_prob = round(proba[1]*100, 2)
         bad_prob = round(proba[0]*100, 2)
+
         fig = go.Figure(go.Indicator(
             mode="gauge+number+delta",
             value=good_prob,
@@ -137,6 +153,7 @@ if submitted:
             }
         ))
         st.plotly_chart(fig, use_container_width=True)
+
         st.markdown("""
         **Legend:**  
         - 🔴 Red zone: Low chance of good investment (0-50%)  
