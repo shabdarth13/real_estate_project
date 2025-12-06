@@ -10,69 +10,76 @@ import plotly.graph_objects as go
 # Page config and dark theme
 # -------------------------
 st.set_page_config(page_title="Real Estate Investment Advisor", layout="wide")
-st.markdown(
-    """
-    <style>
-    /* FORCE DARK MODE EVERYWHERE */
-    :root {
-        --background-color: #0f111a !important;
-        --text-color: #ffffff !important;
-        --primary-color: #4a90e2 !important;
-    }
+st.markdown("""
+<style>
 
-    html, body, [data-testid="stAppViewContainer"], .stApp  {
-        background-color: #0f111a !important;
-        color: #ffffff !important;
-    }
+html, body, [class*="css"]  {
+    background-color: #050510 !important;
+    color: #E8E8E8 !important;
+}
 
-    /* Input fields (number, text, selectbox, textarea) */
-    input, textarea, select, .stTextInput > div > div > input,
-    .stNumberInput > div > div > input,
-    .stSelectbox div, .stSelectbox select {
-        background-color: #1a1c25 !important;
-        color: #ffffff !important;
-        border: 1px solid #444 !important;
-    }
+/* Remove white backgrounds */
+.stApp, .stForm, .stSelectbox, .stTextInput, .stNumberInput, .stExpander {
+    background: transparent !important;
+}
 
-    /* Dropdown menu */
-    .stSelectbox [role="listbox"] {
-        background-color: #1a1c25 !important;
-        color: #ffffff !important;
-    }
+/* Neon Cyberpunk Inputs */
+input, select, textarea {
+    background-color: #0A0B14 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #13f1ff !important;
+    border-radius: 6px !important;
+    padding: 6px !important;
+    box-shadow: 0 0 8px #13f1ff50;
+}
 
-    /* Form, expander, and containers */
-    .stForm, .stExpander, .streamlit-expanderHeader {
-        background-color: #14161f !important;
-        color: #ffffff !important;
-        border-radius: 8px !important;
-        border: 1px solid #333 !important;
-    }
+/* Labels */
+label, .stMarkdown, .css-1aumxhk {
+    color: #E8E8E8 !important;
+}
 
-    /* Labels */
-    label, .stMarkdown, .css-17eq0hr, .css-1offfwp, .stRadio label {
-        color: #ffffff !important;
-    }
+/* Expander glowing border */
+.st-expander {
+    border: 1px solid #13f1ff !important;
+    box-shadow: 0 0 10px #13f1ff70;
+    border-radius: 8px;
+}
 
-    /* Subheaders and headers */
-    h1, h2, h3, .stSubheader {
-        color: #ffffff !important;
-    }
+/* Title Neon */
+h1 {
+    color: #00f3ff !important;
+    text-shadow: 0 0 20px #00f3ff;
+}
 
-    /* Buttons */
-    button, .stButton button {
-        background-color: #4a90e2 !important;
-        color: #ffffff !important;
-        border-radius: 6px !important;
-        border: none !important;
-    }
-    button:hover {
-        background-color: #357ab8 !important;
-    }
+/* Subtitle Neon */
+h2, h3 {
+    color: #b14cff !important;
+    text-shadow: 0 0 12px #b14cff80;
+}
 
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+/* Cyberpunk Button */
+.stButton>button {
+    background-color: #0A0B14 !important;
+    color: #00f3ff !important;
+    border: 1px solid #00f3ff !important;
+    padding: 10px 18px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #00f3ff80;
+    font-size: 16px;
+    font-weight: bold;
+}
+.stButton>button:hover {
+    background-color: #00f3ff !important;
+    color: #000 !important;
+}
+
+/* Remove plotly white bg */
+.js-plotly-plot .plotly, .plot-container {
+    background-color: #050510 !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 
 st.title("🏡 Real Estate Investment Advisor")
