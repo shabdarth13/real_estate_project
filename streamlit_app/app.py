@@ -13,32 +13,67 @@ st.set_page_config(page_title="Real Estate Investment Advisor", layout="wide")
 st.markdown(
     """
     <style>
-    /* Dark background for entire page */
-    .stApp {
-        background-color: #0f111a;
-        color: #f5f5f5;
+    /* FORCE DARK MODE EVERYWHERE */
+    :root {
+        --background-color: #0f111a !important;
+        --text-color: #ffffff !important;
+        --primary-color: #4a90e2 !important;
     }
-    /* Remove white panels from forms */
-    .stForm, .stExpander, .stTextInput, .stNumberInput, .stSelectbox {
-        background-color: transparent !important;
-        color: #f5f5f5;
+
+    html, body, [data-testid="stAppViewContainer"], .stApp  {
+        background-color: #0f111a !important;
+        color: #ffffff !important;
     }
-    /* Headers */
-    h1, h2, h3 {
-        color: #ffffff;
+
+    /* Input fields (number, text, selectbox, textarea) */
+    input, textarea, select, .stTextInput > div > div > input,
+    .stNumberInput > div > div > input,
+    .stSelectbox div, .stSelectbox select {
+        background-color: #1a1c25 !important;
+        color: #ffffff !important;
+        border: 1px solid #444 !important;
     }
-    /* Subheader text */
-    .stSubheader {
-        color: #f0f0f0;
+
+    /* Dropdown menu */
+    .stSelectbox [role="listbox"] {
+        background-color: #1a1c25 !important;
+        color: #ffffff !important;
     }
-    /* Placeholder text color */
-    ::placeholder {
-        color: #b0b0b0 !important;
+
+    /* Form, expander, and containers */
+    .stForm, .stExpander, .streamlit-expanderHeader {
+        background-color: #14161f !important;
+        color: #ffffff !important;
+        border-radius: 8px !important;
+        border: 1px solid #333 !important;
     }
+
+    /* Labels */
+    label, .stMarkdown, .css-17eq0hr, .css-1offfwp, .stRadio label {
+        color: #ffffff !important;
+    }
+
+    /* Subheaders and headers */
+    h1, h2, h3, .stSubheader {
+        color: #ffffff !important;
+    }
+
+    /* Buttons */
+    button, .stButton button {
+        background-color: #4a90e2 !important;
+        color: #ffffff !important;
+        border-radius: 6px !important;
+        border: none !important;
+    }
+    button:hover {
+        background-color: #357ab8 !important;
+    }
+
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 st.title("🏡 Real Estate Investment Advisor")
 st.markdown("Fill all fields. Defaults are examples from your sample data.")
@@ -133,13 +168,14 @@ if submitted:
         fig = go.Figure(go.Indicator(
             mode="gauge+number+delta",
             value=good_prob,
-            number={'suffix': "%", 'font': {'color': 'white', 'size': 22}},
+            number={'suffix': "%", 'font': {'color': 'white', 'size': 24}},
             delta={'reference': 50, 'increasing': {'color': "green"}, 'decreasing': {'color': "red"}},
-            title={'text': "Good Investment Probability", 'font': {'color': 'white', 'size': 18}},
+            title={'text': "Good Investment Probability", 'font': {'color': 'white', 'size': 20}},
             gauge={
                 'axis': {'range': [0, 100], 'tickwidth': 2, 'tickcolor': "white"},
-                'bar': {'color': "darkblue", 'thickness': 0.25},
-                'bgcolor': "black",
+                'bar': {'color': "#0a47ff", 'thickness': 0.25},
+                'bgcolor': "#0f111a",
+                'borderwidth': 0,
                 'steps': [
                     {'range': [0, 50], 'color': "red"},
                     {'range': [50, 75], 'color': "yellow"},
@@ -149,9 +185,13 @@ if submitted:
                     'line': {'color': "white", 'width': 4},
                     'thickness': 0.75,
                     'value': good_prob
+                    }
                 }
-            }
-        ))
+            ))
+        fig.update_layout(
+            paper_bgcolor="#0f111a",
+            plot_bgcolor="#0f111a",
+            )
         st.plotly_chart(fig, use_container_width=True)
 
         st.markdown("""
